@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const crypto = requre('crypto');
-const uuidv1 = require('uuid/v1');
+const crypto = require('crypto');
+const {v1 : uuidv1} = require('uuid');
 
 const userSchema = new mongoose.Schema(
     {
@@ -10,18 +10,18 @@ const userSchema = new mongoose.Schema(
             maxlength: 32,
             trim: true
         },
-        mobile_number: {
-            type:Number,
-            required:true,
-            maxlength: 11,
-            unique: true
-        },
         email:{
             type:String,
             required: true,
             trim: true,
             unique: true,
             maxlength: 32
+        },
+        phone: {
+            type:String,
+            required:true,
+            maxlength: 11,
+            unique: true
         },
         address:{
             type: String,
@@ -67,7 +67,7 @@ userSchema.methods = {
         return this.securePassword(plainPassword) === this.encry_password;
     },
 
-    securePassword: function (params) {
+    securePassword: function (plainPassword) {
         if(!plainPassword) return "";
         try{
             return crypto
