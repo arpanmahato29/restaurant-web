@@ -8,6 +8,8 @@ exports.getUserById = (req,res,next,id) => {
         error: "No such User found in DB"
       });
     }
+    user.salt = undefined;
+    user.encry_password = undefined;
     req.profile = user;
     next();
   })
@@ -49,6 +51,7 @@ exports.removeUser = (req,res,next) => {
       next();
     }
   )
+
 }
 
 //TODO: user purchaselist and push order 

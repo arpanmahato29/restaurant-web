@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const {ObjectId} = mongoose.Schema;
 const categorySchema = new mongoose.Schema(
     {
         name:{
@@ -8,6 +8,15 @@ const categorySchema = new mongoose.Schema(
             required:true,
             maxlength: 32,
             unique:true
+        },
+        // owner:{
+        //     type: ObjectId,
+        //     ref: 'User',
+        //     required:true,
+        // }
+        owner:{
+            type:"String",
+            required:true
         }
     },
     {

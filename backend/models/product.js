@@ -24,6 +24,10 @@ const productSchema = new mongoose.Schema(
             ref: 'Category',
             required: true
         },
+        owner:{
+            type:String,
+            required:true,
+        },
         stock:{
             type: Number
         },
