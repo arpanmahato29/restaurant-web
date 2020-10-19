@@ -12,6 +12,8 @@ const app = express();
 const authRoute = require('./routes/authentication');
 const userRoute = require('./routes/user');
 const categoryRoute = require('./routes/category');
+const restaurantRoute = require('./routes/restaurant');
+const productRoute = require('./routes/product');
 //Database Connection
 dbConnection = process.env.DATABASE;
 mongoose.connect(dbConnection,{
@@ -27,7 +29,9 @@ app.use(cors());
 //Routes
 app.use("/api",authRoute);
 app.use("/api",userRoute);
-app.use("/api",categoryRoute)
+app.use("/api",categoryRoute);
+app.use("/api",restaurantRoute);
+app.use("/api",productRoute)
 //Port
 const port = process.env.PORT || 8000;
 //Starting the server

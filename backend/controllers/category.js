@@ -15,8 +15,6 @@ exports.getCategoryById = (req,res,next,id) => {
 
 exports.createCategory = (req,res) => {
   const category = new Category(req.body);
-  //console.log(req)
-  category.owner = req.profile._id;
   category.save((error,category) => {
     if(error){
       return res.status(400).json({
@@ -43,44 +41,24 @@ exports.getAllCategories = ( req,res) => {
   })
 }
 
-exports.getSelectedCategories = (req,res) => {
-  Category.find({owner:req.profile._id})
-  .exec((error, categories) => {
-    if(error){
-      return res.status(400).json({
-        error: "No Categories found"
-      })
-    }
-    res.json(categories)
-  })
-}
-
 exports.updateCategory = (req,res) => {
   
-  if(req.category.owner !== req.profile._id){
-    return res.status(400).json({
-      error: "You dont have access"
-    })
-  }
-  category.name = req.body.name;
-
-  category.save((error, updatedCategory) => {
-    if (error) {
-      return res.status(400).json({
-        error: "Failed to update category"
-      });
+  Category.findOneAndUpdate(
+    {_id: req.category._id},
+    {name: req.body.name},
+    (error, updatedCategory) => {
+      if(error){
+        return res.status(400).json({
+          error: 'FAILED TO UPDATE CATEGORY'
+        });
+      }
+      res.json(updatedCategory);
     }
-    res.json(updatedCategory);
-  });
+  )
   
 }
 
 exports.removeCategory = (req,res) => {
-  if(req.category.owner !== req.profile._id){
-    return res.status(400).json({
-      error: "You dont have access"
-    })
-  }
   Category.findOneAndRemove(
     {_id: req.category._id},
     (error,category) => {

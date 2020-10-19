@@ -6,7 +6,6 @@ const {
   createCategory,
   getAllCategories,
   getCategory,
-  getSelectedCategories,
   updateCategory,
   removeCategory
 } = require('../controllers/category');
@@ -32,13 +31,11 @@ router.post(
 
 router.get('/category/:categoryId', getCategory);
 router.get('/categories', getAllCategories);
-router.get('/protected/category/:userId',
-isSignedIn,isAuthenticated,isAdmin,getSelectedCategories)
 
 router.put('/category/:categoryId/:userId',
-  isSignedIn,isAuthenticated,isAdmin, updateCategory)
+  isSignedIn,isAuthenticated,isAdmin, updateCategory);
 
 router.delete('/category/:categoryId/:userId',
-  isSignedIn,isAuthenticated,isAdmin, removeCategory)
+  isSignedIn,isAuthenticated,isAdmin, removeCategory);
 
 module.exports = router;
