@@ -25,8 +25,14 @@ const productSchema = new mongoose.Schema(
             required: true
         },
         owner:{
-            type:String,
+            type:ObjectId,
+            ref:'User',
             required:true,
+        },
+        restaurant:{
+            type: ObjectId,
+            ref: 'Restaurant',
+            required: true
         },
         stock:{
             type: Number

@@ -43,6 +43,7 @@ exports.createProduct = (req,res) => {
 
       let product = new Product(fields);
       product.owner = req.profile._id;
+      product.restaurant = req.restaurant._id;
 
       //handle file
       if(file.photo) {

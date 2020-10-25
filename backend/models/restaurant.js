@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const {ObjectId} = mongoose.Schema;
+
+
 const restaurantSchema = new mongoose.Schema(
     {
         name:{
@@ -8,6 +10,21 @@ const restaurantSchema = new mongoose.Schema(
             required:true,
             maxlength: 32,
             unique:true
+        },
+        address:{
+            type:String,
+            trim:true,
+            default:""
+        },
+        phone:{
+            type:String,
+            trim:true,
+            default:""
+        },
+        description:{
+            type:String,
+            trim:true,
+            default:""
         },
         owner:{
             type: ObjectId,

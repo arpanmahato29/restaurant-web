@@ -14,12 +14,14 @@ const {
 	isSeller,
 	isAdmin
 } =  require('../controllers/authentication')
-const {getUserById, getUser} = require('../controllers/user')
+const {getUserById} = require('../controllers/user')
+const {getRestaurantById} = require('../controllers/restaurant')
 
 router.param("userId",getUserById);
+router.param("restaurantId",getRestaurantById);
 router.param("productId", getUserById);
 
-router.post('/product/create/:userId',
+router.post('/product/create/:restaurantId/:userId',
 isSignedIn,isAuthenticated,isAdmin,createProduct);
 
 router.get('/product/:productId', getProduct);

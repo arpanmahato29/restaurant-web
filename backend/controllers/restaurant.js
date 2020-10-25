@@ -1,8 +1,8 @@
-
-const Restuarant = require('../models/restaurant');
+const _ =  require('lodash');
+const Restaurant = require('../models/restaurant');
 
 exports.getRestaurantById = (req,res,next,id) => {
-  Restuarant.findById(id)
+  Restaurant.findById(id)
   .exec((error,restaurant) => {
     if(error){
       return res.status(400).json({
@@ -15,20 +15,20 @@ exports.getRestaurantById = (req,res,next,id) => {
 }
 
 exports.createRestaurant = (req,res) => {
-  const restaurant = new Restuarant(req.body);
+  const restaurant = new Restaurant(req.body);
   restaurant.save((error, restaurant) => {
     if(error){
       return res.status(400).json({
         error: 'UNABLE TO SAVE RESTAURANT'
       });
     }
-    res.json({restaurant});
+    res.json(restaurant);
   })
 }
 
 exports.getAllRestaurants = (req,res) => {
 
-  Restuarant.find()
+  Restaurant.find()
   .exec((error, restaurants) => {
     if(error){
       return res.status(400).json({
@@ -41,9 +41,10 @@ exports.getAllRestaurants = (req,res) => {
 
 exports.updateRestaurant = (req,res) => {
 
-  Restuarant.findByIdAndUpdate(
-    {_id: req.restaurant._id},
-    {name: req.body.name},
+  let restaurant = req.restaurant;
+  restaurant = _.extend(restaurant,req.body);
+
+  restaurant.save(
     (error,updatedRestaurant) => {
       if(error){
         return res.status(400).json({
@@ -57,7 +58,7 @@ exports.updateRestaurant = (req,res) => {
 }
 
 exports.removeRestaurant = (req,res) => {
-  Restuarant.findOneAndRemove(
+  Restaurant.findOneAndRemove(
     {_id: req.restaurant._id},
     (error,restaurant) => {
       if(error){
