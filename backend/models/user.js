@@ -41,7 +41,7 @@ const userSchema = new mongoose.Schema(
             type:Array,
             default: []
         },
-        purchases:{
+        orders:{
             type: Array,
             default:[]
         }

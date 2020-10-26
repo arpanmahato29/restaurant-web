@@ -1,4 +1,6 @@
 const User = require('../models/user');
+const Order = require('../models/order');
+const { request } = require('express');
 
 exports.getUserById = (req,res,next,id) => {
   User.findById(id)
@@ -54,4 +56,31 @@ exports.removeUser = (req,res,next) => {
 
 }
 
-//TODO: user purchaselist and push order 
+exports.userPurchaseList = (req,res) => {
+  Order.find(
+    {user: request.profile._id}
+  ).exec((error, orders) => {
+    if(error){
+      return res.status(400).json({
+        error: 'No order in this account'
+      })
+    }
+    return res.json(orders);
+  })
+}
+
+exports.pushIntoUserOrderList = (req,res,next) =>{
+  User.findOneAndUpdate(
+    {_id:req.profile._id},
+    {$push:{orders:req.body.order}},
+    {new:true},
+    (error,purchases) => {
+      if(error){
+        return res.status(400).json({
+          error: 'Unable to save purchase list'
+        })
+      }
+    }
+  )
+  res.json(req.body.order);
+}

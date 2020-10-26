@@ -14,6 +14,7 @@ const categoryRoute = require('./routes/category');
 const restaurantRoute = require('./routes/restaurant');
 const productRoute = require('./routes/product');
 const offerRoute =require('./routes/offer');
+const orderRoute = require('./routes/order');
 //Database Connection
 dbConnection = process.env.DATABASE;
 mongoose.connect(dbConnection,{
@@ -27,12 +28,13 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
 //Routes
-app.use("/api",authRoute);
-app.use("/api",userRoute);
-app.use("/api",categoryRoute);
-app.use("/api",restaurantRoute);
-app.use("/api",productRoute);
-app.use("/api",offerRoute);
+app.use('/api',authRoute);
+app.use('/api',userRoute);
+app.use('/api',categoryRoute);
+app.use('/api',restaurantRoute);
+app.use('/api',productRoute);
+app.use('/api',offerRoute);
+app.use('/api',orderRoute);
 //Port
 const port = process.env.PORT || 8000;
 //Starting the server
