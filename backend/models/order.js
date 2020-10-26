@@ -5,7 +5,7 @@ const productCartSchema = new mongoose.Schema(
     {
         product:{
             type:ObjectId,
-            ref: "Prodduct"
+            ref: "Product"
         },
         name:String,
         count:Number,
@@ -13,24 +13,28 @@ const productCartSchema = new mongoose.Schema(
     }
 );
 
-const ProductCart = mongoose.moodel("ProductCart",productCartSchema);
+const ProductCart = mongoose.model("ProductCart",productCartSchema);
 
 const OrderSchema = new mongoose.Schema(
     {
         products:[productCartSchema],
         transaction_id:String,
         amount:{type:Number},
+        restaurant:{
+            type:ObjectId,
+            ref: "Restaurant"
+        },
         status:{
             type:String,
             default:"Recieved",
-            enum:["Cancelled","Delivered","Processing"]
+            enum:["Cancelled","Delivered","On Its Way", "Received"]
         },
         update:Date,
         user:{
             type:ObjectId,
             ref:"User"
         }
-    }
+    },
     {
         timestamps:true
     }

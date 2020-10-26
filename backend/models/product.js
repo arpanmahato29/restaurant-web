@@ -24,6 +24,16 @@ const productSchema = new mongoose.Schema(
             ref: 'Category',
             required: true
         },
+        owner:{
+            type:ObjectId,
+            ref:'User',
+            required:true,
+        },
+        restaurant:{
+            type: ObjectId,
+            ref: 'Restaurant',
+            required: true
+        },
         stock:{
             type: Number
         },
