@@ -7,6 +7,8 @@ const {
 	getProduct,
 	photo,
 	removeProduct,
+	updateProduct,
+	getAllProducts,
 } = require("../controllers/product");
 const {
 	isSignedIn,
@@ -19,7 +21,7 @@ const {getRestaurantById} = require('../controllers/restaurant')
 
 router.param("userId",getUserById);
 router.param("restaurantId",getRestaurantById);
-router.param("productId", getUserById);
+router.param("productId", getProductById);
 
 router.post('/product/create/:restaurantId/:userId',
 isSignedIn,isAuthenticated,isAdmin,createProduct);
@@ -29,5 +31,10 @@ router.get('/product/photo/:productId', photo);
 
 router.delete('/product/:productId/:userId',
 isSignedIn,isAuthenticated,isAdmin,removeProduct);
+
+router.put('/product/:productId/:userId',
+isSignedIn,isAuthenticated,isAdmin,updateProduct);
+
+router.get('/products/:restaurantId', getAllProducts);
 
 module.exports = router;

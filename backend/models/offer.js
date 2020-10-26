@@ -14,7 +14,7 @@ const offerSchema = new mongoose.Schema(
             maxlength: 100,
             required:true,
         },
-        minAmount:{
+        minimum_amount:{
             type:Number,
             required:true,
             trim:true,

@@ -1,5 +1,5 @@
 const Category = require('../models/category');
-const User = require('../models/user')
+
 exports.getCategoryById = (req,res,next,id) => {
   Category.findById(id)
   .exec((error,category) => {

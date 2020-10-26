@@ -2,18 +2,20 @@ const Product = require('../models/product');
 const formidable = require('formidable');
 const _  = require('lodash');
 const fs = require('fs');
+const product = require('../models/product');
 
 exports.getProductById = (req,res,next,id) => {
   Product.findById(id)
-  .populate("category")
+  .populate("category restaurant")
   .exec((error,product) => {
     if(error){
       return res.status(400).json({
         error: "Product not found"
       });
-      req.product = product;
-      next();
+      
     }
+    req.product = product;
+    next();
   })
 }
 
@@ -70,7 +72,7 @@ exports.createProduct = (req,res) => {
 
 exports.getProduct = (req,res) => {
   req.product.photo = undefined;
-  return res.json(req.photo);
+  return res.json(req.product);
 }
 
 //middleware
@@ -82,9 +84,11 @@ exports.photo = (req,res,next) => {
   next();
 }
 
-exports.removeProduct = (req,res) => {
-  
-  if(req.product.owner !== req.profile._id){
+exports.removeProduct = (req,res) => {  
+  const _userId = req.profile._id + '';
+  const owner = req.product.owner + '';
+
+  if(owner !== _userId){
     return res.status(400).json({
       error: "You dont have access"
     })
@@ -106,8 +110,9 @@ exports.removeProduct = (req,res) => {
 }
 
 exports.updateProduct = (req,res) => {
-
-  if(req.profile._id !== req.product.owner){
+  const _userId = req.profile._id + '';
+  const owner = req.product.owner + '';
+  if(_userId !== owner){
     return res.status(400).json({
       error: 'No Access to change'
     })
@@ -116,7 +121,7 @@ exports.updateProduct = (req,res) => {
   let form = new formidable.IncomingForm();
   form.keepExtensions = true;
 
-  form.parse(req, (error, fields, files) => {
+  form.parse(req, (error, fields, file) => {
     if(error){
       return res.status(400).json({
         error: 'problem with image'
@@ -151,9 +156,11 @@ exports.updateProduct = (req,res) => {
 
 exports.getAllProducts = (req,res) => {
   //TODO: add sort method to sort by category 
-  Product.find()
+  Product.find(
+    {restaurant: req.restaurant._id}
+  )
   .select('-photo')
-  .populate('category')
+  .populate('category restaurant')
   .exec((error,products) => {
     if(error){
       return res.status(400).json({
@@ -164,4 +171,28 @@ exports.getAllProducts = (req,res) => {
   })
 }
 
+exports.updateStock = (req,res,next) => {
+  let bulkWriteOperataion = req.body.order.product.map(product =>{
+    return{
+      updateOne:{
+        filter:{_id:product._id},
+        update:{$inc:{stock:-product.count, sold:+product.count}}
+      }
+    }
+  })
+  Product.bulkWrite(bulkWriteOperataion,
+    {},
+    (error, products) => {
+      if(error){
+        return res.status(400).json({
+          error: 'Bulk operation failed'
+        })
+      }
+      next();
+    } )
+}
+
+
+
+//TODO: add product search code here
 

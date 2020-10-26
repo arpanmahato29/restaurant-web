@@ -5,7 +5,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-const { truncate } = require('lodash');
 //express config
 const app = express();
 //Route imports
@@ -14,6 +13,7 @@ const userRoute = require('./routes/user');
 const categoryRoute = require('./routes/category');
 const restaurantRoute = require('./routes/restaurant');
 const productRoute = require('./routes/product');
+const offerRoute =require('./routes/offer');
 //Database Connection
 dbConnection = process.env.DATABASE;
 mongoose.connect(dbConnection,{
@@ -31,7 +31,8 @@ app.use("/api",authRoute);
 app.use("/api",userRoute);
 app.use("/api",categoryRoute);
 app.use("/api",restaurantRoute);
-app.use("/api",productRoute)
+app.use("/api",productRoute);
+app.use("/api",offerRoute);
 //Port
 const port = process.env.PORT || 8000;
 //Starting the server
