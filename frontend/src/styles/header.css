@@ -1,0 +1,17 @@
+.header-font{
+  font-size: 2rem;
+}
+
+.login-header{
+  font-size: 1.2rem;
+}
+
+.btn{
+  border-radius: 0% !important;
+  padding: .3rem .3rem !important;
+  font-weight: 600;
+}
+
+.rounded-pill {
+  border-radius: 50rem !important;
+}

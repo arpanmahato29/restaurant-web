@@ -1,5 +1,4 @@
 const Category = require('../models/category');
-const Product  = require('../models/product');
 
 exports.getCategoryById = (req,res,next,id) => {
   Category.findById(id)

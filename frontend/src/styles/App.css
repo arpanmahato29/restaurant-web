@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+.brand{
+  font-family: 'Fredoka One', cursive;
+}
+
+.modal{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); 
+}
+
+.modal-no-border{
+  border:none;
+}
+
+.modal-login{
+  margin-top: 25vh;
+}
+
+.modal-signup{
+  margin-top: 10vh;
+}
+
+
+
