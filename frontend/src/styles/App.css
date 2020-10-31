@@ -1,6 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 .brand{
+  font-family: 'Fredoka One', cursive;
+}
+
+.mobile-btn-home{
+  font-family: 'Itim', cursive;
+}
+
+.mobile-home-body-header{
+  font-family: 'Itim', cursive;
+}
+
+.mobile-modal-header{
   font-family: 'Fredoka One', cursive;
 }
 
