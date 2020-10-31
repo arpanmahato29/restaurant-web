@@ -1,33 +1,33 @@
 import {API} from '../../backend';
-
-export const signup = user => {
-  return fetch(`${API/signup}`,
-  {
-    method:'POST',
-    headers:{
-      Accept:'application/json',
-      'Content-Type':'applicaltion/json'
-    },
-    body:JSON.stringify(user)
-  })
-  .then(Response => {
-    return Response.json();
-  })
-  .catch(error => console.log(error))
+import axios from 'axios'
+export const signup = async user => {
+  return await axios.post(
+    `${API}/signup`,
+    JSON.stringify(user),
+    {
+      headers: {
+        Accept:'application/json',
+        'Content-Type':'application/json'
+      }
+    }
+  )
+  .then(response => response.data)
+  .catch(error => error.response.data);
 };
 
-export const signin = user => {
-  return fetch(`${API}/signin`,
-  {
-    method:'POST',
-    headers: {
-      Accept:'application/json',
-      'Content-Type':'application/json'
-    },
-    body:JSON.stringify(user)
-  })
-  .then(Response => Response.json())
-  .catch(error => console.log(error))
+export const signin = async user => {
+  return await axios.post(
+    `${API}/signin`,
+    JSON.stringify(user),
+    {
+      headers:{
+        Accept:'application/json',
+        'Content-Type':'application/json'
+      }
+    }
+  )
+  .then(response => response.data)
+  .catch(error => error.response.data)
 };
 
 export const authenticate = (data,next) => {
@@ -37,15 +37,12 @@ export const authenticate = (data,next) => {
   }
 }
 
-export const signout = next => {
+export const signout = async () => {
   if(typeof window !== 'undefined'){
     localStorage.removeItem('jwt');
-    next();
-    return fetch(`${API}/signout`,
-    {
-      method:'GET'
-    })
-    .then(Response=>console.log('signout successful'))
+    window.location.replace('/');
+    return await axios.get(`${API}/signout`)
+    .then(response => console.log(response))
     .catch(error => console.log(error))
   }
 }
