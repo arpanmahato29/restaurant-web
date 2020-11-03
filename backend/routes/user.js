@@ -6,7 +6,9 @@ const {
   getUser,
   updateUser,
   removeUser,
-  userPurchaseList
+  userPurchaseList,
+  updateUserPicture,
+  getUserAddress
 } = require('../controllers/user');
 const {isSignedIn,isAuthenticated,isSeller,isAdmin, signout} = require('../controllers/authentication');
 
@@ -20,5 +22,9 @@ router.delete('/user/:userId',isSignedIn,isAuthenticated,removeUser,signout);
 
 router.get('/user/orders/:userId',
 isSignedIn,isAuthenticated,userPurchaseList);
+
+router.get('/user/address/:userId',
+isSignedIn,isAuthenticated,getUserAddress);
+
 
 module.exports = router;

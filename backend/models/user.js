@@ -24,8 +24,8 @@ const userSchema = new mongoose.Schema(
             unique: true
         },
         address:{
-            type: String,
-            default:""
+            type: Array,
+            default:[]
         },
         encry_password:{
             type:String,
@@ -44,6 +44,10 @@ const userSchema = new mongoose.Schema(
         orders:{
             type: Array,
             default:[]
+        },
+        photo:{
+            data: Buffer,
+            contentType:String
         }
     },
     {

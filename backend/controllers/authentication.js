@@ -3,6 +3,7 @@ const User = require('../models/user');
 const {validationResult} = require('express-validator');
 const jwt = require('jsonwebtoken');
 const expressJwt = require('express-jwt');
+const formidable = require('formidable')
 
 exports.signup = (req,res) => {
     //checking for validations
@@ -28,8 +29,9 @@ exports.signup = (req,res) => {
 
         //send response to front end
         const {_id, name, email, role, phone, address} = user;
-        return res.status(200).json({token,user:{_id, name, email, role, phone, address}});
+        return res.status(200).json({token,user:{_id, name, email, role, phone}});
     });
+
 }
 
 exports.signin = (req,res) => {
@@ -61,7 +63,7 @@ exports.signin = (req,res) => {
 
         //send response to front end
         const {_id, name, email, role, phone, address} = user;
-        return res.status(200).json({token,user:{_id, name, email, role, phone, address}});
+        return res.status(200).json({token,user:{_id, name, email, role, phone}});
     })
 }
 

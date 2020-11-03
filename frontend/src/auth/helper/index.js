@@ -37,7 +37,7 @@ export const authenticate = (data,next) => {
   }
 }
 
-export const signout = async () => {
+export const logout = async () => {
   if(typeof window !== 'undefined'){
     localStorage.removeItem('jwt');
     window.location.replace('/');

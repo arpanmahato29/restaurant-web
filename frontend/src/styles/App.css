@@ -12,9 +12,81 @@
   font-family: 'Itim', cursive;
 }
 
+.mobile-navbar{
+  font-family: 'Itim', cursive;
+}
+
+.mobile-logout-button{
+  font-family: 'Itim', cursive;
+}
+
 .mobile-modal-header{
   font-family: 'Fredoka One', cursive;
 }
 
+.mobile-container{
+  height: 100vh;
+}
 
+.mobile-navbar-controller{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.mobile-border-top{
+  border-top: 3px #ffa755 solid;
+}
+
+.mobile-nav-item{
+  width:25vw;
+}
+
+.mobile-navbar{
+  padding: 0.5rem 0.2rem;
+}
+
+.mobile-nav-text{
+  font-weight: 700;
+}
+
+.mobile-profile-header {
+  height:30vh;
+  background: url('../images/cover.jpg');
+  background-size: cover;
+  filter: blur(1.8px);
+}
+
+.mobile-profile-picture-container{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top:-7vh;
+}
+
+.mobile-address-card{
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.mobile-address-card-body{
+  padding: 0.4rem;
+}
+
+.mobile-address-type{
+  line-height: 1;
+  font-weight: 600;
+}
+
+.mobile-delete-modal{
+  margin-top:38vh;
+}
+
+.mobile-no-address{
+  margin-top:30vh
+}
+
+.mobile-address-custom-select{
+  flex:0.3 !important;
+}
 

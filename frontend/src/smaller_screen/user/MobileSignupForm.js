@@ -49,11 +49,7 @@ const MobileSignupForm = () => {
   const redirectOnSuccess = () => {
     if(didRedirect){
       if(isAuthenticated()){
-        return(
-          <div className='alert alert-success rounded-pill'>
-            <small>login successful</small>
-          </div>
-        )
+        window.location.href = '/restaurant'
       }
     }
   }

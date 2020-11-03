@@ -1,6 +1,8 @@
 const User = require('../models/user');
 const Order = require('../models/order');
-const { request } = require('express');
+const formidable = require('formidable');
+const _  = require('lodash');
+const fs = require('fs');
 
 exports.getUserById = (req,res,next,id) => {
   User.findById(id)
@@ -12,6 +14,7 @@ exports.getUserById = (req,res,next,id) => {
     }
     user.salt = undefined;
     user.encry_password = undefined;
+    user.photo = undefined;
     req.profile = user;
     next();
   })
@@ -24,10 +27,11 @@ exports.getUser = (req,res) => {
 }
 
 exports.updateUser = (req,res) => {
+  console.log(req.body)
   User.findByIdAndUpdate(
     {_id:req.profile._id},
     {$set: req.body},
-    {new:true, useFindAndModify: false},
+    {new:true, useFindAndModify: true},
     (error, user) => {
       if(error){
         return res.status(400).json({
@@ -57,8 +61,9 @@ exports.removeUser = (req,res,next) => {
 }
 
 exports.userPurchaseList = (req,res) => {
+  console.log()
   Order.find(
-    {user: request.profile._id}
+    {user: req.profile._id}
   ).exec((error, orders) => {
     if(error){
       return res.status(400).json({
@@ -83,4 +88,20 @@ exports.pushIntoUserOrderList = (req,res,next) =>{
     }
   )
   res.json(req.body.order);
+}
+
+exports.updateProfileImage = (req,res)=>{
+  
+}
+
+exports.getUserAddress = (req,res) => {
+  User.findOne({_id:req.profile.id})
+  .exec((error,user) =>{
+    if(error){
+      return res.status(400).json({
+        error: 'Cannot get the address at this time. Try again later'
+      })
+    }
+    res.json(user.address);
+  })
 }

@@ -7,9 +7,7 @@ import '../styles/home.css'
 const home = () => {
 
   if(isAuthenticated()){
-    console.log("rediect to restaurant");
-  } else {
-    console.log("redirect to homepage")
+    window.location.href = '/restaurant'
   }
   
   if(window.innerWidth > 720){
