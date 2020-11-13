@@ -2,6 +2,7 @@ const Product = require('../models/product');
 const formidable = require('formidable');
 const _  = require('lodash');
 const fs = require('fs');
+const { createCategory } = require('./category');
 
 exports.getProductById = (req,res,next,id) => {
   Product.findById(id)
@@ -166,6 +167,18 @@ exports.getAllProducts = (req,res) => {
       });
     }
     res.json(products);
+  })
+}
+
+exports.getProductByCategory = (req,res) => {
+  Product.find({category:req.body})
+  .count((error, categoryCount) => {
+    if(error){
+      return res.status(400).json({
+        error:error
+      })
+    }
+    res.json(categoryCount)
   })
 }
 

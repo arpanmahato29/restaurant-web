@@ -28,7 +28,7 @@ exports.signup = (req,res) => {
         res.cookie('token',token,{expire: new Date() + 30});
 
         //send response to front end
-        const {_id, name, email, role, phone, address} = user;
+        const {_id, name, email, role, phone, } = user;
         return res.status(200).json({token,user:{_id, name, email, role, phone}});
     });
 

@@ -16,14 +16,14 @@ const MobileHomeScreen = () => {
             Login/Create Account quickly to manage orders
           </small>
           <button 
-            className='btn btn-warning btn-lg btn-block mobile-btn-home btn-rounded-pill'
+            className='btn btn-danger btn-lg btn-block mobile-btn-home'
             data-toggle="modal" 
             data-target="#loginMobileModal"
             >
             LOGIN
           </button>
           <button 
-            className='btn btn-warning btn-lg btn-block mobile-btn-home btn-rounded-pill'
+            className='btn btn-danger btn-lg btn-block mobile-btn-home'
             data-toggle="modal" 
             data-target="#signupMobileModal"
             >

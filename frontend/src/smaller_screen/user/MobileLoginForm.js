@@ -34,7 +34,7 @@ const MobileLoginForm = () => {
   const errorMessage = () => {
     if(error){
       return(
-        <div className='alert alert-danger rounded-pill'>
+        <div className='alert alert-danger'>
           <small>{error}</small>
         </div>
       )
@@ -62,7 +62,7 @@ const MobileLoginForm = () => {
         </label>
         <input 
           type="email" 
-          className="form-control rounded-pill" 
+          className="form-control" 
           id="loginEmail" 
           aria-describedby="emailHelp"
           onChange={handleChange('email')}
@@ -84,7 +84,7 @@ const MobileLoginForm = () => {
         </label>
         <input 
           type="password" 
-          className="form-control rounded-pill" 
+          className="form-control " 
           id="loginPassword"
           onChange={handleChange('password')}
           value={password}
@@ -92,7 +92,7 @@ const MobileLoginForm = () => {
       </div>
       <button 
         type="submit" 
-        className="btn btn-warning btn-block btn-rounded-pill"
+        className="btn btn-danger btn-block"
         onClick={handleSubmit}
       >
         LOGIN

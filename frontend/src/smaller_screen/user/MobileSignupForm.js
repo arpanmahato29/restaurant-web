@@ -39,7 +39,7 @@ const MobileSignupForm = () => {
   const errorMessage = () => {
     if(error){
       return(
-        <div className='alert alert-danger rounded-pill'>
+        <div className='alert alert-danger'>
           <small>{error}</small>
         </div>
       )
@@ -67,7 +67,7 @@ const MobileSignupForm = () => {
         </label>
         <input 
           type="text" 
-          className="form-control rounded-pill" 
+          className="form-control " 
           id="signupName" 
           onChange={handleChange('name')}
           value={name}
@@ -82,7 +82,7 @@ const MobileSignupForm = () => {
         </label>
         <input 
           type="email" 
-          className="form-control rounded-pill" 
+          className="form-control " 
           id="signupEmail" 
           aria-describedby="emailHelp"
           onChange={handleChange('email')}
@@ -104,7 +104,7 @@ const MobileSignupForm = () => {
         </label>
         <input 
           type="tel" 
-          className="form-control rounded-pill" 
+          className="form-control " 
           id="signupPhone" 
           aria-describedby="phoneHelp"
           onChange={handleChange('phone')}
@@ -126,7 +126,7 @@ const MobileSignupForm = () => {
         </label>
         <input 
           type="password" 
-          className="form-control rounded-pill" 
+          className="form-control " 
           id="signupPassword"
           onChange={handleChange('password')}
           value={password}
@@ -134,10 +134,10 @@ const MobileSignupForm = () => {
       </div>
       <button 
         type="submit" 
-        className="btn btn-warning btn-block btn-rounded-pill"
+        className="btn btn-danger btn-block"
         onClick={handleSubmit}
       >
-        LOGIN
+        SIGN UP
       </button>
     </form>
   )

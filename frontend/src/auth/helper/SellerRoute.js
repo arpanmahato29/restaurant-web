@@ -9,7 +9,7 @@ const SellerRoute = ({component:Component,...rest}) => {
     <Route
       {...rest}
       render={props =>
-        userAuthenticated && user.role == 1 ? (
+        userAuthenticated && user.role === 1 ? (
           <Component {...props}/>
         ) : (
           <Redirect

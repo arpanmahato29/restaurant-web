@@ -5,7 +5,7 @@ import { Link, withRouter } from 'react-router-dom'
 
 const currentTab = (history,path) => {
   if(history.location.pathname === path){
-    return { color: '#ff9f43'}
+    return { color: '#ff7171'}
   } else {
     return {color: 'grey'}
   }

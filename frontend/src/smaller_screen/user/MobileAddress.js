@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {RiMoreFill, RiHome2Fill} from 'react-icons/ri'
+import {RiMoreFill} from 'react-icons/ri'
 import { userAddress,updateUser } from '../../api_helpers/user';
 import { isAuthenticated } from '../../auth/helper';
 
@@ -63,7 +63,7 @@ const MobileAddress = () => {
   const FailedToAddAddress = () => {
     if(error){
       return (
-        <div className='alert alert-danger rounded-pill'>
+        <div className='alert alert-danger '>
           Error!! Cannot add the address
         </div>
       )
@@ -86,16 +86,16 @@ const MobileAddress = () => {
             <form>
               <div className="form-group">
                 <small htmlFor="complete-address" className='text-muted'>Complete Address</small>
-                <input className="form-control rounded-pill" id="complete-address" required value={selectedAdd.address}  onChange={handleChange('address')}/>
+                <input className="form-control" id="complete-address" required value={selectedAdd.address}  onChange={handleChange('address')}/>
               </div>
               <div className="form-group">
-                <input className="form-control rounded-pill" placeholder='Floor (Optional)' value={selectedAdd.floor} onChange={handleChange('floor')} />
+                <input className="form-control " placeholder='Floor (Optional)' value={selectedAdd.floor} onChange={handleChange('floor')} />
               </div>
               <div className="form-group">
-                <input className="form-control rounded-pill" placeholder='How to Reach (Optional)' value={selectedAdd.how_to_reach} onChange={handleChange('how_to_reach')}/>
+                <input className="form-control" placeholder='How to Reach (Optional)' value={selectedAdd.how_to_reach} onChange={handleChange('how_to_reach')}/>
               </div>
               <div className="input-group mb-3">
-                <select className="custom-select rounded-pill mobile-address-custom-select" id="addressCategory" onChange={handleChange('type')}>
+                <select className="custom-select mobile-address-custom-select" id="addressCategory" onChange={handleChange('type')}>
                   <option defaultValue value='Home'>Home</option>
                   <option value='Work'>Work</option>
                   <option value="Other">Other</option>
@@ -103,8 +103,8 @@ const MobileAddress = () => {
               </div>
             </form>
             <div className='d-flex justify-content-end'>
-              <button className='btn btn-dark btn-rounded-pill' data-dismiss='modal'>Cancel</button>
-              <button className='btn btn-warning rounded-pill ml-2' onClick={handleConfirm}>Confirm</button>
+              <button className='btn btn-dark ' data-dismiss='modal'>Cancel</button>
+              <button className='btn btn-danger ml-2' onClick={handleConfirm}>Confirm</button>
             </div>
           </div>
         </div>
@@ -120,8 +120,8 @@ const MobileAddress = () => {
             <div className="modal-body">
               <p className='text-muted'>Are you sure you want to delete this address</p>
               <div className='d-flex justify-content-end'>
-                <button className='btn btn-dark btn-sm rounded-pill px-3' data-dismiss='modal'>NO</button>
-                <button className='btn btn-warning btn-sm ml-2 rounded-pill px-3' data-dismiss='modal' onClick={handleDelete}>YES</button>
+                <button className='btn btn-dark btn-sm px-3' data-dismiss='modal'>NO</button>
+                <button className='btn btn-danger btn-sm ml-2 px-3' data-dismiss='modal' onClick={handleDelete}>YES</button>
               </div>
             </div>
           </div>
@@ -174,7 +174,7 @@ const MobileAddress = () => {
       )
       }
       <div className='container-s mobile-logout-button px-5'>
-          <a className='btn btn-warning btn-block rounded-pill mt-3' data-toggle="modal" data-target="#editModal">ADD</a>
+          <a className='btn btn-danger btn-block mt-3' data-toggle="modal" data-target="#editModal">ADD</a>
       </div>
     </div>
   )

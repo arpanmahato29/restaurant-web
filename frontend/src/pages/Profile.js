@@ -30,7 +30,7 @@ const Profile = () => {
           <MobileProfile/>
         </div>
         <div className='container mobile-logout-button px-5'>
-          <button className='btn btn-warning btn-block rounded-pill mt-3' onClick={handleLogout}>LOGOUT</button>
+          <button className='btn btn-danger btn-block mt-3' onClick={handleLogout}>LOGOUT</button>
         </div>
         <div className='mobile-navbar-controller mobile-border-top'>
           <MobileNavbar />

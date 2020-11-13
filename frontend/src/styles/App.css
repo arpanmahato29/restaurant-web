@@ -35,7 +35,7 @@
 }
 
 .mobile-border-top{
-  border-top: 3px #ffa755 solid;
+  border-top: 3px #ff7171 solid;
 }
 
 .mobile-nav-item{
@@ -90,3 +90,38 @@
   flex:0.3 !important;
 }
 
+.mobile-admin-card-body{
+  padding-top:0 !important;
+  padding-left:0 !important;
+  padding-bottom: 0 !important;
+}
+
+.mobile-admin-card-icon{
+  padding:0 2rem !important;
+  border-radius: 5px 0 0 5px;
+}
+
+.mobile-admin-card-icon-main{
+  margin-top:35% !important;
+}
+
+.mobile-card-text{
+  font-weight: 600;
+}
+
+.mobile-admin-card{
+  margin-bottom: 1rem;
+}
+
+.mobile-admin-btn{
+  border: 2px lightgray solid;
+  border-radius: 10px;
+}
+
+.mobile-admin-btn-text{
+  font-weight: 600;
+}
+
+.mobile-restaurant-card-body{
+  padding: 0.7rem !important;
+}

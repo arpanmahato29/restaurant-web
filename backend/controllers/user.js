@@ -3,6 +3,7 @@ const Order = require('../models/order');
 const formidable = require('formidable');
 const _  = require('lodash');
 const fs = require('fs');
+const user = require('../models/user');
 
 exports.getUserById = (req,res,next,id) => {
   User.findById(id)
@@ -26,23 +27,67 @@ exports.getUser = (req,res) => {
   return res.json(req.profile);
 }
 
+exports.countUsers = (req,res) => {
+  User.find({role:req.body.role})
+  .count((error,count) => {
+    if(error){
+      return res.status(400).json({
+        error: 'Cannot fetch the count'
+      })
+    }
+    res.json(count)
+  })
+}
+
 exports.updateUser = (req,res) => {
-  console.log(req.body)
   User.findByIdAndUpdate(
     {_id:req.profile._id},
     {$set: req.body},
     {new:true, useFindAndModify: true},
-    (error, user) => {
-      if(error){
-        return res.status(400).json({
-          error: "Not Authorized to Update this USER"
-        });
-      }
-      user.salt = undefined;
-      user.encry_password = undefined;
-      res.json(user);
+  ).exec((error, user) => {
+    if(error){
+      return res.status(400).json({
+        error: "Not Authorized to Update this USER"
+      });
     }
-  )
+    user.salt = undefined;
+    user.encry_password = undefined;
+    const {_id, name, email, role, phone, } = user;
+    res.status(200).json({_id, name, email, role, phone});
+  })
+}
+
+exports.upgradeToSeller = (req,res) => {
+  console.log(req.body);
+  User.findOneAndUpdate(
+    {_id:req.body._id},
+    {$set:{role:req.body.role}},
+    {new:true, useFindAndModify: true}
+  ).exec((error, seller) => {
+    if(error){
+      return res.status(400).json({
+        error: 'Cannot upgrade to seller'
+      })
+    }
+    const {_id, name, email, role, phone, } = user;
+    res.status(200).json({_id, name, email, role, phone});
+  })
+}
+
+exports.searchUser = (req,res) => {
+  User.findOne(
+    {email:req.body.email},
+  ).exec((error,user) => {
+    if(error || !user){
+      return res.status(400).json({
+        error:'No such user exist'
+      })
+    }
+    user.salt = undefined;
+    user.encry_password = undefined;
+    const {_id, name, email, role, phone, } = user;
+    res.status(200).json({_id, name, email, role, phone});
+  })
 }
 
 exports.removeUser = (req,res,next) => {
@@ -105,3 +150,4 @@ exports.getUserAddress = (req,res) => {
     res.json(user.address);
   })
 }
+

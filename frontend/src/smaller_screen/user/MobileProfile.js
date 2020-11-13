@@ -13,13 +13,19 @@ const MobileProfile = () => {
 
   const handleUserProfile = event => {
     event.preventDefault();
+  }
+
+  const editProfile = () => {
     return(
-      <MobileEditProfileModal user={isAuthenticated().user}/>
+      <MobileEditProfileModal 
+        user={{name,email,phone}} 
+      />
     )
   }
 
   return (
     <div className='container'>
+      {editProfile()}
       <div className='profile-user-header text-center text-muted'>
         <p className='mobile-profile-username'>{name}</p>
         <span className='mobile-profile-email pr-2'>{email}</span>
@@ -39,7 +45,7 @@ const MobileProfile = () => {
           </div>
           <p>My Address Book</p>
         </Link>
-        { role === 2 &&
+        { role === 1 &&
           <Link className='row pb-1 text-muted' to='/seller-dashboard'>
             <div className='mobile-profile-main-icon'>
               <FaMoneyCheckAlt size={25}/>
@@ -55,7 +61,11 @@ const MobileProfile = () => {
             <p>Admin Dashboard</p>
           </Link>
         }
-        <div className='row pb-1 text-muted' onClick={handleUserProfile} >
+        <div className='row pb-1 text-muted' 
+          onClick={handleUserProfile} 
+          data-toggle="modal" 
+          data-target="#editProfileModal"  
+        >
           <div className='mobile-profile-main-icon'>
             <RiUserSettingsFill size={25}/>
           </div>
