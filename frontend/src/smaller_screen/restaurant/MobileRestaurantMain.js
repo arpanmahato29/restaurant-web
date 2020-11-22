@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { getRestaurants } from '../../api_helpers/restaurant';
-import Restaurant from '../../pages/Restaurant';
 import MobileRestaurantCard from './MobileRestaurantCard';
 
 const MobileRestaurantMain = () => {
@@ -17,7 +16,7 @@ const MobileRestaurantMain = () => {
 
   return (
     <div>
-      {
+      { restaurants &&
         restaurants.map((restaurant,index) => (
           <MobileRestaurantCard restaurant={restaurant} key={index}/>
         ))

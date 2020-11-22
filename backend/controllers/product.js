@@ -2,7 +2,6 @@ const Product = require('../models/product');
 const formidable = require('formidable');
 const _  = require('lodash');
 const fs = require('fs');
-const { createCategory } = require('./category');
 
 exports.getProductById = (req,res,next,id) => {
   Product.findById(id)
@@ -15,6 +14,7 @@ exports.getProductById = (req,res,next,id) => {
       
     }
     req.product = product;
+    // console.log(req.product);
     next();
   })
 }
@@ -29,13 +29,11 @@ exports.createProduct = (req,res) => {
         error: 'problem with image'
       })
     }
-    const {name, description, price, category,stock} = fields;
-
+    const {name, description, price, category} = fields;
     if(!name ||
       !description ||
       !price ||
-      !category ||
-      !stock
+      !category
       ) {
         return res.status(400).json({
           error: "Please provide all the data mentioned"
@@ -44,7 +42,7 @@ exports.createProduct = (req,res) => {
 
       let product = new Product(fields);
       product.owner = req.profile._id;
-      product.restaurant = req.restaurant._id;
+      product.restaurant = req.restaurant;
 
       //handle file
       if(file.photo) {
@@ -61,7 +59,7 @@ exports.createProduct = (req,res) => {
       product.save((error,product) => {
         if(error) {
           return res.status(400).json({
-            error: "Cannot save in database"
+            error: "Cannot add product"
           })
         }
         res.json(product);
@@ -70,17 +68,15 @@ exports.createProduct = (req,res) => {
 }
 
 exports.getProduct = (req,res) => {
-  req.product.photo = undefined;
   return res.json(req.product);
 }
 
 //middleware
-exports.photo = (req,res,next) => {
+exports.photo = (req,res) => {
   if(req.product.photo.data) {
-    res.set("Content-Type",req.profile.photo.contentType);
+    res.set("Content-Type",req.product.photo.contentType);
     return res.send(req.product.photo.data);
   }
-  next();
 }
 
 exports.removeProduct = (req,res) => {  
@@ -158,7 +154,7 @@ exports.getAllProducts = (req,res) => {
   Product.find(
     {restaurant: req.restaurant._id}
   )
-  .select('-photo')
+  .select(['-photo'])
   .populate('category restaurant')
   .exec((error,products) => {
     if(error){

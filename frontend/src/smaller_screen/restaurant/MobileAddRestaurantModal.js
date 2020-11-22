@@ -19,13 +19,13 @@ function MobileAddRestaurantModal() {
   const handleSubmit = async event => {
     event.preventDefault();
     let userData = await searchUser(user._id,token,{email:resturant.owner})
-    if(userData.erro){
+    if(userData.error){
       setError(userData.error);
     } else if (userData.role === 0){
       userData = await upgradeRole(user._id,token,userData._id,1);
     }
     if(userData.role > 0){
-      let data = createRestaurant(user._id,token,userData._id,resturant.name);
+      let data = await createRestaurant(user._id,token,userData._id,resturant.name);
       if(data.error){
         setError(data.error);
       } else {

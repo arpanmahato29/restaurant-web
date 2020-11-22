@@ -39,6 +39,19 @@ exports.getAllRestaurants = (req,res) => {
   })
 }
 
+exports.getSellerRestaurants = (req,res) => {
+  Restaurant.find(
+    {owner:req.profile._id}
+  ).exec((error,restaurants) => {
+    if(error || !restaurants){
+      return res.status(400).json({
+        error:'Cannot Fetch restaurants'
+      })
+    }
+    res.json(restaurants);
+  })
+}
+
 exports.updateRestaurant = (req,res) => {
 
   let restaurant = req.restaurant;

@@ -1,5 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .brand{
   font-family: 'Fredoka One', cursive;
 }
@@ -124,4 +137,12 @@
 
 .mobile-restaurant-card-body{
   padding: 0.7rem !important;
+}
+
+.rounded-right{
+  border-radius: 0 5px 5px 0 !important;
+}
+
+.text-bold{
+  font-weight: 600;
 }

@@ -39,7 +39,7 @@ export const authenticate = (data,next) => {
 
 export const logout = async () => {
   if(typeof window !== 'undefined'){
-    localStorage.removeItem('jwt');
+    localStorage.clear();
     window.location.replace('/');
     return await axios.get(`${API}/signout`)
     .then(response => console.log(response))

@@ -26,3 +26,17 @@ export const getRestaurants = async () => {
   .catch(error => error.response.data);
   return data;
 }
+
+export const getSellerRestaurant = async(userId,token) => {
+  const data = await axios.get(
+    `${API}/restaurants/${userId}`,
+    {
+      headers:{
+        Authorization:`Bearer ${token}`
+      }
+    }
+  )
+  .then(response => response.data)
+  .catch(error => error.response.data);
+  return data;
+}

@@ -15,7 +15,7 @@ export const createCategory = async (userId, token , category) => {
   )
   .then(response=>response.data)
   .catch(error=>error.response.data)
-  
+
   return data;
 }
 
@@ -25,7 +25,7 @@ export const getAllCategories = async () => {
   )
   .then(response=>response.data)
   .catch(error=>error.response.data)
-   return data;
+  return data;
 }
 
 export const updateCategory = async (userId,token,categoryId,name) => {

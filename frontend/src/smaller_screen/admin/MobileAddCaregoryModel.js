@@ -43,7 +43,7 @@ const MobileAddCaregoryModel = () => {
             <form>
               {errorMessage()}
               <div className="form-group">
-                <label htmlFor="categoryName ml-2">Email address</label>
+                <label htmlFor="categoryName ml-2">Category Name</label>
                 <input type="text" className="form-control" id="categoryName" value={name} onChange={handleChange}/>
               </div>
               <div className='d-flex justify-content-end'>

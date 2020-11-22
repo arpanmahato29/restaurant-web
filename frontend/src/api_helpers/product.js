@@ -1,8 +1,15 @@
+import {API} from '../backend'
 import axios from "axios"
 
-export const createProduct = async (userId,token,product) =>{
+export const createProduct = async (userId,token,restaurantId,product) =>{
+  if(!restaurantId){
+    
+    return {
+      error: 'Select a restaurant'
+    }
+  }
   const data = await axios.post(
-    `${API}/product/create/${userId}`,
+    `${API}/product/create/${restaurantId}/${userId}`,
     product,
     {
       headers:{
@@ -13,7 +20,6 @@ export const createProduct = async (userId,token,product) =>{
   ).then(response => response.data)
   .catch(error => error.response.data)
 
-  console.log(data);
   return data;
 }
 
@@ -25,6 +31,15 @@ export const getProduct = async (productId) => {
 
   console.log(data);
   return data; 
+}
+
+export const getProductByRestaurant = async (restaurantId) => {
+  const data = await axios.get(
+    `${API}/restaurant/products/${restaurantId}`,
+  ).then(response=>response.data)
+  .catch(error=>error.response.data)
+
+  return data
 }
 
 export const updateProduct = async (userId,token,productId,product) => {

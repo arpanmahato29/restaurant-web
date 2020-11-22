@@ -9,7 +9,7 @@ const {
 	removeProduct,
 	updateProduct,
 	getAllProducts,
-	getProductByCategory
+	getProductByCategory,
 } = require("../controllers/product");
 const {
 	isSignedIn,
@@ -38,7 +38,7 @@ isSignedIn,isAuthenticated,isSeller,removeProduct);
 router.put('/product/:productId/:userId',
 isSignedIn,isAuthenticated,isSeller,updateProduct);
 
-router.get('/products/:restaurantId', getAllProducts);
+router.get('/restaurant/products/:restaurantId', getAllProducts);
 
 router.post('/category/products',
 getProductByCategory);
