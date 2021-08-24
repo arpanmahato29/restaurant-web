@@ -13,7 +13,8 @@ const {
   createRestaurant,
   getAllRestaurants,
   updateRestaurant,
-  removeRestaurant
+  removeRestaurant,
+  getSellerRestaurants
 } = require('../controllers/restaurant')
 
 router.param('userId', getUserById);
@@ -30,4 +31,6 @@ isSignedIn,isAuthenticated,isAdmin,updateRestaurant);
 router.delete('/restaurant/:restaurantId/:userId',
 isSignedIn,isAuthenticated,isAdmin,removeRestaurant);
 
+router.get('/restaurants/:userId',
+isSignedIn,isAuthenticated,isSignedIn,getSellerRestaurants)
 module.exports = router;

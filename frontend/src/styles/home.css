@@ -1,0 +1,39 @@
+.mobile-home-header{
+  height: 60vh;
+}
+
+.mobile-home-brand{
+  padding-top: 20vh;
+  font-size: 4rem; 
+  margin-bottom: 0 !important; 
+}
+
+.mobile-home-body{
+  margin-top:2rem ;
+}
+
+.mobile-home-body-header{
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.mobile-btn-home{
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 0.2rem;
+  margin-top:1rem
+}
+
+.mobile-modal-header{
+  font-size:2rem;
+  font-weight: 600;
+}
+
+.mobile-modal-body-label{
+  font-weight: 600;
+}
+
+
+.btn-square{
+  border-radius: 0 !important;
+}

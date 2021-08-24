@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.brand{
+  font-family: 'Fredoka One', cursive;
+}
+
+.mobile-btn-home{
+  font-family: 'Itim', cursive;
+}
+
+.mobile-home-body-header{
+  font-family: 'Itim', cursive;
+}
+
+.mobile-navbar{
+  font-family: 'Itim', cursive;
+}
+
+.mobile-logout-button{
+  font-family: 'Itim', cursive;
+}
+
+.mobile-modal-header{
+  font-family: 'Fredoka One', cursive;
+}
+
+.mobile-container{
+  height: 100vh;
+}
+
+.mobile-navbar-controller{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.mobile-border-top{
+  border-top: 3px #ff7171 solid;
+}
+
+.mobile-nav-item{
+  width:25vw;
+}
+
+.mobile-navbar{
+  padding: 0.5rem 0.2rem;
+}
+
+.mobile-nav-text{
+  font-weight: 700;
+}
+
+.mobile-profile-header {
+  height:30vh;
+  background: url('../images/cover.jpg');
+  background-size: cover;
+  filter: blur(1.8px);
+}
+
+.mobile-profile-picture-container{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top:-7vh;
+}
+
+.mobile-address-card{
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.mobile-address-card-body{
+  padding: 0.4rem;
+}
+
+.mobile-address-type{
+  line-height: 1;
+  font-weight: 600;
+}
+
+.mobile-delete-modal{
+  margin-top:38vh;
+}
+
+.mobile-no-address{
+  margin-top:30vh
+}
+
+.mobile-address-custom-select{
+  flex:0.3 !important;
+}
+
+.mobile-admin-card-body{
+  padding-top:0 !important;
+  padding-left:0 !important;
+  padding-bottom: 0 !important;
+}
+
+.mobile-admin-card-icon{
+  padding:0 2rem !important;
+  border-radius: 5px 0 0 5px;
+}
+
+.mobile-admin-card-icon-main{
+  margin-top:35% !important;
+}
+
+.mobile-card-text{
+  font-weight: 600;
+}
+
+.mobile-admin-card{
+  margin-bottom: 1rem;
+}
+
+.mobile-admin-btn{
+  border: 2px lightgray solid;
+  border-radius: 10px;
+}
+
+.mobile-admin-btn-text{
+  font-weight: 600;
+}
+
+.mobile-restaurant-card-body{
+  padding: 0.7rem !important;
+}
+
+.rounded-right{
+  border-radius: 0 5px 5px 0 !important;
+}
+
+.text-bold{
+  font-weight: 600;
+}

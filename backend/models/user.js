@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema(
             required: true,
             trim: true,
             unique: true,
-            maxlength: 32
+            maxlength: 100
         },
         phone: {
             type:String,
@@ -24,8 +24,8 @@ const userSchema = new mongoose.Schema(
             unique: true
         },
         address:{
-            type: String,
-            default:""
+            type: Array,
+            default:[]
         },
         encry_password:{
             type:String,
@@ -44,6 +44,10 @@ const userSchema = new mongoose.Schema(
         orders:{
             type: Array,
             default:[]
+        },
+        photo:{
+            data: Buffer,
+            contentType:String
         }
     },
     {

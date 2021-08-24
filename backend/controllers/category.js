@@ -1,7 +1,7 @@
 const Category = require('../models/category');
-const Product  = require('../models/product');
 
 exports.getCategoryById = (req,res,next,id) => {
+  console.log(req.body);
   Category.findById(id)
   .exec((error,category) => {
     if(error){
@@ -18,9 +18,11 @@ exports.createCategory = (req,res) => {
   const category = new Category(req.body);
   category.save((error,category) => {
     if(error){
-      return res.status(400).json({
-        error: "Not able to save category in DB"
-      })
+      if(error.code){
+        return res.status(400).json({
+          error: 'Category already exist'
+        })
+      }
     }
     res.json({category});
   })
@@ -53,7 +55,7 @@ exports.updateCategory = (req,res) => {
           error: 'FAILED TO UPDATE CATEGORY'
         });
       }
-      res.json(updatedCategory);
+      res.json('Category Updated');
     }
   )
   

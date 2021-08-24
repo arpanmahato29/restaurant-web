@@ -1,0 +1,36 @@
+.mobile-profile-username{
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0 !important;
+}
+
+.mobile-profile-email, .mobile-profile-phone{
+  font-size: 0.8rem;
+  font-weight: 550 ;
+  margin-bottom: 0 !important;
+}
+
+.profile-user-header{
+  padding-bottom:0.2rem ;
+  border-bottom: 0.5px solid lightgrey;
+}
+
+.mobile-profile-body{
+  position: relative;
+  top:-3rem;
+}
+
+.mobile-profile-main{
+  margin-top: 1rem;
+  font-weight:600;
+}
+
+.mobile-profile-main-icon{
+  padding-right: 1rem;
+}
+
+.mobile-logout-button{
+  position: absolute;
+  width: 100%;
+  bottom:4.5rem;
+}

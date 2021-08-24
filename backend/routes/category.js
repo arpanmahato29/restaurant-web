@@ -21,6 +21,7 @@ const { getUserById } = require('../controllers/user');
 router.param('userId',getUserById);
 router.param('categoryId', getCategoryById);
 
+//create
 router.post(
   '/category/create/:userId',
   isSignedIn,
@@ -28,10 +29,10 @@ router.post(
   isAdmin,
   createCategory
 )
-
+//get
 router.get('/category/:categoryId', getCategory);
 router.get('/categories', getAllCategories);
-
+//update
 router.put('/category/:categoryId/:userId',
   isSignedIn,isAuthenticated,isAdmin, updateCategory);
 
